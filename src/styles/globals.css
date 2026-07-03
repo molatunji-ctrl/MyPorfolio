@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────── */
+:root {
+  --violet:       #7C3AED;
+  --violet-light: #A78BFA;
+  --cyan:         #06B6D4;
+  --cyan-light:   #67E8F9;
+  --pink:         #EC4899;
+  --bg:           #06060f;
+
+  --surface:       rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(124, 58, 237, 0.4);
+
+  --text:       #f1f0f9;
+  --text-muted: rgba(241, 240, 249, 0.5);
+  --text-faint: rgba(241, 240, 249, 0.28);
+
+  --glass-blur: 20px;
+}
+
+/* ─── Base reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Glass utility ──────────────────────────────────────── */
+@layer components {
+  .glass {
+    @apply rounded-2xl border transition-all duration-300;
+    background: var(--surface);
+    border-color: var(--border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+  .glass:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+  }
+
+  .btn-primary {
+    @apply px-7 py-3 rounded-xl text-white font-semibold text-sm no-underline transition-all duration-200;
+    background: linear-gradient(135deg, var(--violet), #4F46E5);
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.3);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4);
+  }
+
+  .btn-outline {
+    @apply px-7 py-3 rounded-xl font-medium text-sm no-underline transition-all duration-200;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover {
+    border-color: var(--violet-light);
+    background: rgba(124, 58, 237, 0.08);
+  }
+
+  .grad-text {
+    background: linear-gradient(135deg, var(--violet-light) 0%, var(--cyan-light) 55%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold tracking-widest uppercase block mb-3;
+    color: var(--violet-light);
+  }
+
+  .section-title {
+    @apply font-display font-bold leading-tight mb-4;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.03em;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* ─── Scroll reveal ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Form inputs ─── */
+  .form-input,
+  .form-textarea {
+    @apply w-full rounded-xl text-sm outline-none transition-all duration-200;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    resize: none;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--text-faint); }
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: var(--violet);
+    background: rgba(124, 58, 237, 0.06);
+  }
+  .form-textarea { min-height: 120px; }
+
+  .form-label {
+    @apply block text-xs font-semibold tracking-widest uppercase mb-1;
+    color: var(--text-muted);
+  }
+}
