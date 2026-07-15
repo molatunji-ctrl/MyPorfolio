@@ -1,3 +1,5 @@
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+
 /**
  * SectionHeader
  *
@@ -8,8 +10,10 @@
  *  - className   {string}   Extra classes on the wrapper
  */
 export default function SectionHeader({ label, title, description, className = "" }) {
+  const ref = useScrollReveal();
+
   return (
-    <div className={`mb-14 reveal ${className}`}>
+    <div ref={ref} className={`mb-14 reveal ${className}`}>
       {label && <span className="section-label">{label}</span>}
       <h2 className="section-title">{title}</h2>
       {description && (

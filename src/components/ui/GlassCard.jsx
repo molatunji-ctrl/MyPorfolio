@@ -1,3 +1,5 @@
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+
 /**
  * GlassCard
  * A reusable glassmorphism card wrapper.
@@ -16,8 +18,11 @@ export default function GlassCard({
   style = {},
   children,
 }) {
+  const ref = useScrollReveal();
+
   return (
     <div
+      ref={reveal ? ref : undefined}
       className={`glass${reveal ? " reveal" : ""} ${className}`}
       style={{ transitionDelay: delay ? `${delay}s` : undefined, ...style }}
     >
