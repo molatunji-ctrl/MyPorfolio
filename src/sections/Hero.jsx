@@ -1,318 +1,153 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-/* ── Floating badge ───────────────────────────────────────── */
-function FloatingBadge({ children, style = {} }) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        background: "rgba(6,6,15,0.85)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid var(--border)",
-        borderRadius: 12,
-        padding: "0.45rem 0.9rem",
-        fontSize: "0.78rem",
-        fontWeight: 500,
-        whiteSpace: "nowrap",
-        animation: "float 3s ease-in-out infinite",
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+/* ── Profile card: one memorable element for the hero ─────── */
+const PROFILE = [
+  ["role",       "full-stack developer"],
+  ["experience", "2 years"],
+  ["based in",   "Lagos, Nigeria"],
+  ["stack",      "React, Node.js, Firebase"],
+  ["shipped",    "church platform, restaurant app"],
+];
 
-/* ── Avatar visual ────────────────────────────────────────── */
-function AvatarVisual() {
-  return (
-    <div
-      style={{
-        position: "relative",
-        width: 300,
-        height: 300,
-        flexShrink: 0,
-      }}
-    >
-      {/* Outer dashed ring */}
-      <div
-        style={{
-          position: "absolute",
-          inset: -32,
-          borderRadius: "50%",
-          border: "1px dashed rgba(124,58,237,0.2)",
-          animation: "spin 20s linear infinite reverse",
-        }}
-      />
-      {/* Gradient ring */}
-      <div
-        style={{
-          position: "absolute",
-          inset: -16,
-          borderRadius: "50%",
-          border: "1px solid transparent",
-          background:
-            "linear-gradient(rgba(6,6,15,0), rgba(6,6,15,0)) padding-box, linear-gradient(135deg, rgba(124,58,237,0.6), rgba(6,182,212,0.6)) border-box",
-          animation: "spin 8s linear infinite",
-        }}
-      />
-      {/* Core */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          borderRadius: "50%",
-          background:
-            "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.12))",
-          border: "1px solid rgba(124,58,237,0.3)",
-          backdropFilter: "blur(10px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "4.5rem",
-            fontWeight: 700,
-            letterSpacing: "-0.04em",
-            background:
-              "linear-gradient(135deg, var(--violet-light), var(--cyan))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          MM
-        </span>
-      </div>
-
-      {/* Floating badges */}
-      <FloatingBadge
-        style={{
-          top: "6%",
-          right: "-16%",
-          color: "var(--violet-light)",
-          borderColor: "rgba(124,58,237,0.35)",
-          animationDelay: "0s",
-        }}
-      >
-        ⚛️ React / Vite
-      </FloatingBadge>
-      <FloatingBadge
-        style={{
-          bottom: "10%",
-          left: "-18%",
-          color: "var(--cyan-light)",
-          borderColor: "rgba(6,182,212,0.35)",
-          animationDelay: "-1.5s",
-        }}
-      >
-        🔥 Firebase
-      </FloatingBadge>
-      <FloatingBadge
-        style={{
-          top: "60%",
-          right: "-20%",
-          color: "#6EE7B7",
-          borderColor: "rgba(52,211,153,0.35)",
-          animationDelay: "-0.75s",
-        }}
-      >
-        🟢 Node.js
-      </FloatingBadge>
-    </div>
-  );
-}
-
-/* ── Stats bar ────────────────────────────────────────────── */
-function StatItem({ num, label }) {
+function ProfileCard() {
   return (
     <div
       className="glass"
-      style={{ padding: "1.5rem", textAlign: "center" }}
+      role="img"
+      aria-label="Profile summary: full-stack developer, 2 years of experience, based in Lagos, Nigeria, working with React, Node.js and Firebase."
+      style={{ width: "100%", maxWidth: 440, padding: 0, overflow: "hidden" }}
     >
+      {/* Window bar */}
       <div
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
-          fontSize: "2rem",
-          fontWeight: 700,
-          lineHeight: 1,
-          marginBottom: "0.4rem",
-          background:
-            "linear-gradient(135deg, var(--violet-light), var(--cyan))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          display: "flex", alignItems: "center", gap: 8,
+          padding: "0.8rem 1.1rem",
+          borderBottom: "1px solid var(--border)",
         }}
       >
-        {num}
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#F87171" }} />
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FBBF24" }} />
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#34D399" }} />
+        <span style={{ marginLeft: 8, fontSize: "0.78rem", color: "var(--text-muted)", fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}>
+          michael.profile
+        </span>
       </div>
-      <div
+
+      {/* Lines */}
+      <dl
         style={{
-          fontSize: "0.75rem",
-          color: "var(--text-muted)",
-          fontWeight: 500,
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
+          margin: 0, padding: "1.4rem 1.4rem 1.6rem",
+          fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace",
+          fontSize: "0.88rem", lineHeight: 2,
         }}
       >
-        {label}
-      </div>
+        {PROFILE.map(([k, v]) => (
+          <div key={k} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <dt style={{ minWidth: 96, color: "var(--violet-light)" }}>{k}</dt>
+            <dd style={{ margin: 0, color: "var(--text)" }}>{v}</dd>
+          </div>
+        ))}
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          <dt style={{ minWidth: 96, color: "var(--violet-light)" }}>status</dt>
+          <dd style={{ margin: 0, color: "#6EE7B7" }}>
+            open to work<span className="cursor" aria-hidden="true" />
+          </dd>
+        </div>
+      </dl>
     </div>
   );
 }
 
-/* ── Hero section ─────────────────────────────────────────── */
+/* ── Quiet facts row ──────────────────────────────────────── */
+function Fact({ value, label }) {
+  return (
+    <div style={{ padding: "0 1.5rem", borderLeft: "1px solid var(--border)" }}>
+      <div
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: "1.5rem", fontWeight: 700,
+          letterSpacing: "-0.02em", color: "var(--text)",
+        }}
+      >
+        {value}
+      </div>
+      <div style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>{label}</div>
+    </div>
+  );
+}
+
 export default function Hero() {
-  const statsRef = useScrollReveal();
+  const factsRef = useScrollReveal();
 
   return (
     <section
       id="hero"
       style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        paddingTop: 80,
-        position: "relative",
-        zIndex: 1,
+        minHeight: "100vh", display: "flex", alignItems: "center",
+        paddingTop: 80, position: "relative", zIndex: 1,
       }}
     >
-      <div
-        style={{
-          maxWidth: 1140,
-          margin: "0 auto",
-          padding: "0 2rem",
-          width: "100%",
-        }}
-      >
-        {/* Hero grid */}
+      <div style={{ maxWidth: 1140, margin: "0 auto", padding: "0 2rem", width: "100%" }}>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "4rem",
-            alignItems: "center",
-          }}
           className="hero-grid"
+          style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "4rem", alignItems: "center" }}
         >
           {/* Left */}
           <div>
-            {/* Eyebrow badge */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "0.35rem 0.85rem",
-                background: "rgba(124,58,237,0.12)",
-                border: "1px solid rgba(124,58,237,0.3)",
-                borderRadius: 999,
-                fontSize: "0.78rem",
-                fontWeight: 500,
-                color: "var(--violet-light)",
-                marginBottom: "1.5rem",
-                letterSpacing: "0.04em",
-              }}
-            >
-              <span
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: "var(--violet-light)",
-                  animation: "pulse_dot 2s ease-in-out infinite",
-                  flexShrink: 0,
-                  display: "inline-block",
-                }}
-              />
-              Available for work
-            </div>
-
-            {/* Title */}
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "clamp(2.5rem, 5vw, 3.8rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                letterSpacing: "-0.03em",
-                marginBottom: "1rem",
+                fontSize: "clamp(2.4rem, 5vw, 3.7rem)",
+                fontWeight: 700, lineHeight: 1.08,
+                letterSpacing: "-0.035em", marginBottom: "1.25rem",
               }}
             >
-              Building digital
-              <br />
-              <span className="grad-text">experiences</span>
-              <br />
-              that matter.
+              I build full-stack web apps people actually use.
             </h1>
 
-            {/* Subtitle */}
             <p
               style={{
-                fontSize: "1.05rem",
-                color: "var(--text-muted)",
-                lineHeight: 1.75,
-                maxWidth: 440,
-                marginBottom: "2.5rem",
+                fontSize: "1.1rem", color: "var(--text-muted)",
+                lineHeight: 1.7, maxWidth: 520, marginBottom: "2.25rem",
               }}
             >
-              Full-stack developer from Lagos, Nigeria. I craft fast, beautiful,
-              and purposeful web applications — from church platforms to
-              restaurant apps.
+              I'm Michael, a developer in Lagos with 2 years of experience. I've
+              shipped a church platform and a restaurant app, from the interface
+              to the database.
             </p>
 
-            {/* CTA buttons */}
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <a href="#projects" className="btn-primary">
-                View my work
-              </a>
-              <a href="#contact" className="btn-outline">
-                Let's talk
-              </a>
+              <a href="#projects" className="btn-primary">See my projects</a>
+              <a href="#contact" className="btn-outline">Contact me</a>
             </div>
           </div>
 
-          {/* Right — avatar */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className="hero-avatar"
-          >
-            <AvatarVisual />
+          {/* Right */}
+          <div className="hero-card" style={{ display: "flex", justifyContent: "center" }}>
+            <ProfileCard />
           </div>
         </div>
 
-        {/* Stats row */}
+        {/* Facts */}
         <div
-          ref={statsRef}
+          ref={factsRef}
           className="reveal"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1.5rem",
-            marginTop: "3rem",
-          }}
+          style={{ display: "flex", flexWrap: "wrap", rowGap: "1.25rem", marginTop: "4rem" }}
         >
-          <StatItem num="5+" label="Projects Built" />
-          <StatItem num="8+" label="Technologies" />
-          <StatItem num="1"  label="Year Coding"   />
+          <div style={{ paddingRight: "1.5rem" }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.5rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
+              2 years
+            </div>
+            <div style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>of experience</div>
+          </div>
+          <Fact value="5+" label="projects built" />
+          <Fact value="15+" label="technologies used" />
         </div>
       </div>
 
-      {/* Mobile responsive override */}
       <style>{`
-        @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-avatar { display: none !important; }
+        @media (max-width: 860px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
         }
       `}</style>
     </section>
