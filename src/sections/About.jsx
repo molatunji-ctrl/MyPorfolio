@@ -65,7 +65,7 @@ export default function About() {
           {/* Left: bio + contact info */}
           <GlassCard style={{ padding: "2.5rem" }}>
             <p style={{ fontSize: "1rem", color: "var(--text-muted)", lineHeight: 1.85, marginBottom: "1.25rem", maxWidth: "60ch" }}>
-              I'm <strong style={{ color: "var(--text)", fontWeight: 600 }}>Michael Molatunji</strong>, a
+              I'm <strong style={{ color: "var(--text)", fontWeight: 600 }}>Michael Olatunji</strong>, a
               full-stack developer with 2 years of experience, studying software engineering at{" "}
               <strong style={{ color: "var(--text)", fontWeight: 600 }}>Aptech Computer Education</strong>{" "}
               in Lagos.
