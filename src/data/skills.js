@@ -15,7 +15,7 @@ export const skills = [
     category: "Tools & Services",
     dotColor: "#F9A8D4",
     variant: "pink",
-    items: ["Git / GitHub", "Vercel", "EmailJS", "Paystack", "Firestore", "VS Code"],
+    items: ["Git / GitHub", "Vercel", "Netlify","EmailJS", "Paystack", "Firestore", "VS Code"],
   },
   {
     category: "Other",

@@ -43,4 +43,16 @@ export const projects = [
     githubUrl: "https://github.com/molatunji-ctrl",
     stack: ["React", "Tailwind", "Glassmorphism", "Vercel"],
   },
+  {
+    id: 4,
+    title: "FreshFind",
+    description:
+      "A food Market , where you can find the best food in your area, with a user-friendly interface and a wide variety of options to choose from.",
+    icon: "🧑‍💻",
+    accent: "gradient",
+    liveUrl: "http://freshfind-app.netlify.app/",
+    githubUrl: "https://github.com/molatunji-ctrl",
+    stack: ["React", "Tailwind",  "Netlify"],
+  },
+
 ];
