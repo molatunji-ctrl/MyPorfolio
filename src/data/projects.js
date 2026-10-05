@@ -1,3 +1,8 @@
+/*
+  githubUrl is null where it only pointed to your GitHub profile, not a repository.
+  Replace null with the real repo link (https://github.com/molatunji-ctrl/<repo>)
+  and the "View code" button will appear automatically.
+*/
 export const projects = [
   {
     id: 1,
@@ -29,30 +34,29 @@ export const projects = [
     icon: "🍽️",
     accent: "pink",
     liveUrl: null,
-    githubUrl: "https://github.com/molatunji-ctrl",
+    githubUrl: null, // add the Lexy Kitchen repo link
     stack: ["React", "Node.js", "Express", "MySQL", "JWT", "Paystack"],
-  },
-  {
-    id: 4,
-    title: "Developer Portfolio",
-    description:
-      "Glassmorphism personal portfolio with animated gradient orbs, scroll reveal animations, and a contact form — built with React and deployed on Vercel.",
-    icon: "🧑‍💻",
-    accent: "gradient",
-    liveUrl: "https://my-portfolio-two-steel-56.vercel.app",
-    githubUrl: "https://github.com/molatunji-ctrl",
-    stack: ["React", "Tailwind", "Glassmorphism", "Vercel"],
   },
   {
     id: 4,
     title: "FreshFind",
     description:
-      "A food Market , where you can find the best food in your area, with a user-friendly interface and a wide variety of options to choose from.",
+      "A food marketplace for finding the best food in your area, with a simple interface and a wide variety of options to browse.",
+    icon: "🥬",
+    accent: "cyan",
+    liveUrl: "https://freshfind-app.netlify.app/",
+    githubUrl: null, // add the FreshFind repo link
+    stack: ["React", "Tailwind", "Netlify"],
+  },
+  {
+    id: 5,
+    title: "Developer Portfolio",
+    description:
+      "Glassmorphism personal portfolio with animated gradient orbs, scroll reveal animations, and a contact form, built with React and deployed on Vercel.",
     icon: "🧑‍💻",
     accent: "gradient",
-    liveUrl: "http://freshfind-app.netlify.app/",
-    githubUrl: "https://github.com/molatunji-ctrl",
-    stack: ["React", "Tailwind",  "Netlify"],
+    liveUrl: "https://myporfolio-ebon.vercel.app",
+    githubUrl: null, // add the portfolio repo link
+    stack: ["React", "Vite", "Tailwind", "Vercel"],
   },
-
 ];

@@ -132,3 +132,67 @@ body {
     color: var(--text-muted);
   }
 }
+/* Import this AFTER your existing global CSS (e.g. in main.jsx) */
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--violet-light, #A78BFA);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.45);
+  color: #fff;
+}
+
+/* Skip link for keyboard and screen-reader users */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: #fff;
+  color: #06060f;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Hero profile card cursor */
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Link hover states (replaces inline onMouseEnter handlers) */
+.info-link { transition: color 0.2s; }
+.info-link:hover { color: var(--violet-light, #A78BFA); }
+.project-link { transition: background 0.2s, border-color 0.2s; }
+.project-link:hover { background: rgba(255, 255, 255, 0.12) !important; border-color: rgba(255, 255, 255, 0.25) !important; }
+
+/* Anchor jumps land below the fixed navbar */
+section[id] { scroll-margin-top: 72px; }
+html { scroll-behavior: smooth; }
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cursor { animation: none; }
+}
